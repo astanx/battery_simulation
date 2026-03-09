@@ -1,4 +1,11 @@
-# Battery simulation
+# Battery simulation <div align="center">
+
+[![English](https://img.shields.io/badge/English-blue?style=flat&logo=)](README.md)
+[![Russian](https://img.shields.io/badge/Russian-blue?style=flat&logo=)](README.ru.md)
+
+</div>
+
+<br>
 
 https://github.com/user-attachments/assets/1158006c-c256-4927-a30b-19cf256f4405
 
