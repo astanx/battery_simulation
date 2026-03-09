@@ -1,3 +1,7 @@
+# Initial width and height of the window
+INIT_WIDTH = 800
+INIT_HEIGHT = 600
+
 useUI = False # True - input with console, False - random values
 useAutoSquares = True # True - automatically generate squares
                       # False - only use squares added with add_square(), at app.py initialization

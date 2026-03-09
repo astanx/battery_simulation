@@ -2,7 +2,7 @@ from .cell import Cell
 from math import exp, log
 from .hydrogen_cell_constants import *
 from .cell_constants import *
-from settings import temperatureBaseUnit
+from config import temperatureBaseUnit
 from src.helper import *
 
 

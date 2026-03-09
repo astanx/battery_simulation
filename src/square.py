@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import random
 from constants import *
-from settings import *
+from config import *
 from src.helper import *
 from math import exp, sqrt
 

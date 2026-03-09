@@ -1,7 +1,5 @@
 SPEED = 60
 
-INIT_WIDTH, INIT_HEIGHT = 800, 600
-
 BG_DARK     = (12, 14, 22)
 BG_GRID     = (18, 20, 30)
 GRID_COLOR  = (35, 40, 55)

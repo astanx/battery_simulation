@@ -4,7 +4,7 @@ from pygame.locals import *
 pygame.init()
 
 from src.road import Road
-from settings import lithiumSpeed, hydrogenSpeed, timeScale
+from config import lithiumSpeed, hydrogenSpeed, timeScale, INIT_WIDTH, INIT_HEIGHT
 from constants import *
 from src.cell.lithium_cell import *
 from src.cell.hydrogen_cell import *

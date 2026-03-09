@@ -3,7 +3,7 @@ from pygame.locals import *
 import random
 from src.square import Square
 from constants import *
-from settings import *
+from config import *
 
 class Road:
   def create_squares(self, num_squares=5, windowHeight=INIT_HEIGHT):
