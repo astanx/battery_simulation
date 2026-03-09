@@ -18,9 +18,10 @@ class Application:
     self.width = INIT_WIDTH
     self.height = INIT_HEIGHT
     self.running = True
+    
     self.is_paused = False
     self.is_stopped = False
-    
+        
     # You can modify batteries here
     lithium_cell = LithiumCell(color=(0,0,255), capacity=40000, current=1, speed=lithiumSpeed, voltage=3.7)
     hydrogen_cell = HydrogenCell(color=(255,0,0), capacity=120000, current=10, current_density=7000, 
@@ -33,6 +34,9 @@ class Application:
       lithium_road,
       hydrogen_road
     ]
+    
+    self.controller_road_index = len(self.roads) - 1
+    self.controlled_road = self.roads[self.controller_road_index]
     
     # Example of adding a square with specific humidity and temperature
     # lithium_road.add_square(humidity=50, temperature=80)
@@ -51,18 +55,36 @@ class Application:
       if event.type == pygame.QUIT:
         self.running = False
       if event.type == KEYDOWN:
-        if event.key == K_ESCAPE:
-          self.running = False
-        if event.key == K_SPACE:
-          self.is_stopped = not self.is_stopped
-        if event.key == K_RETURN:
-          self.is_paused = not self.is_paused
+        self.handle_keyboard(event)
       if event.type == VIDEORESIZE:
         self.width, self.height = event.size
         self.window = pygame.display.set_mode((self.width, self.height), pygame.RESIZABLE)
         for road in self.roads:
           road.handle_resize(self.width, self.height)
-          
+  
+  def handle_keyboard(self, event):
+    if event.key == K_ESCAPE:
+      self.running = False
+    if event.key == K_SPACE:
+      self.is_stopped = not self.is_stopped
+    if event.key == K_RETURN:
+      self.is_paused = not self.is_paused
+    
+    if event.key == K_UP:
+      self.controlled_road.move_battery_up()
+    if event.key == K_DOWN:
+      self.controlled_road.move_battery_down()
+      
+    if event.key == K_RIGHT:
+      if self.controller_road_index > 0:
+        self.controller_road_index -= 1
+        self.controlled_road = self.roads[self.controller_road_index]
+        
+    if event.key == K_LEFT:
+      if self.controller_road_index < len(self.roads) - 1:
+        self.controller_road_index += 1
+        self.controlled_road = self.roads[self.controller_road_index]
+  
   def run(self):
     while self.running:
       dt = self.clock.tick(60) / 1000

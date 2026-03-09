@@ -24,6 +24,12 @@ class Road:
       for _ in range(num_squares):
         self.create_square(humidity=random.randint(minimumRandomHumidity, maximumRandomHumidity), temperature=random.randint(minimumRandomTemperature, maximumRandomTemperature), windowHeight=windowHeight)
   
+  def move_battery_up(self):
+    self.cell.set_position(self.cell.pos[0], self.cell.pos[1] - self.gap)
+  
+  def move_battery_down(self):
+    self.cell.set_position(self.cell.pos[0], self.cell.pos[1] + self.gap)
+  
   def create_square(self, humidity, temperature, windowHeight=INIT_HEIGHT):
     init = self.squares[-1].pos[1] - self.gap if self.squares else windowHeight / 2 - self.cell.size / 2 - 100
     y = init
