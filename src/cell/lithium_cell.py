@@ -3,7 +3,7 @@ from math import exp
 from .lithium_cell_constants import *
 from .cell_constants import *
 from settings import temperatureBaseUnit
-from helper import *
+from src.helper import *
 
 class LithiumCell(Cell):
     def __init__(self, pos=(400, 300), size=100, color=(0, 255, 0), capacity=400.0, current=0.0, speed=1.0, voltage=3.7):      

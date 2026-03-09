@@ -1,9 +1,8 @@
 import pygame
 from pygame.locals import *
 import random
-from square import Square
+from src.square import Square
 from constants import *
-from cell.cell import Cell
 from settings import *
 
 class Road:

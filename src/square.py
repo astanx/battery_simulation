@@ -3,7 +3,7 @@ from pygame.locals import *
 import random
 from constants import *
 from settings import *
-from helper import *
+from src.helper import *
 from math import exp, sqrt
 
 class Square:

@@ -1,9 +1,9 @@
-from app import Application
+from src.app import Application
 
 app = Application()
 
 app.run()
 
-from chart import draw_road_charts
+from src.chart import draw_road_charts
 
 draw_road_charts(app.roads)

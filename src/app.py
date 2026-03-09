@@ -3,11 +3,11 @@ from pygame.locals import *
 
 pygame.init()
 
-from road import Road
+from src.road import Road
 from settings import lithiumSpeed, hydrogenSpeed, timeScale
 from constants import *
-from cell.lithium_cell import *
-from cell.hydrogen_cell import *
+from src.cell.lithium_cell import *
+from src.cell.hydrogen_cell import *
 
 class Application:
   def __init__(self):

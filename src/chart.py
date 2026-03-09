@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from road import Road
+from src.road import Road
 
 def draw_road_charts(roads: list[Road]):
   plt.figure(figsize=(10, 5))
