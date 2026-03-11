@@ -75,6 +75,9 @@ You can customize energy consumption and cell behavior by modifying:
 - [src/cell/hydrogen_cell_constants.py](./src/cell/hydrogen_cell_constants.py)
 - [src/cell/lithium_cell_constants.py](./src/cell/lithium_cell_constants.py)
 
+You can customize cells and roads by modifying:
+- [src/app.py](./src/app.py)
+
 Also you can configure the application by modifying [config.py](./config.py)
 
 ---
@@ -159,5 +162,29 @@ Also you can configure the application by modifying [config.py](./config.py)
       E = (R * temperature / (n * F)) * log(C_bulk / C_surface)
       ```
       This models mass concentration losses: as current increases, reactants (like Oxygen) get depleted at the reaction surface faster than they can diffuse from the bulk gas.
+
+
+### Feels-like temperature
+ [Heat index](https://en.wikipedia.org/wiki/Heat_index) was used for calculation of feels-like temperature
+ ##### Used in code
+ ```python
+  HI = (-42.379 +
+          2.04901523 * T +
+          10.14333127 * H -
+          0.22475541 * T * H -
+          0.00683783 * T * T -
+          0.05481717 * H * H +
+          0.00122874 * T * T * H +
+          0.00085282 * T * H * H -
+          0.00000199 * T * T * H * H)
+    
+ if H < 13 and 80 <= T <= 112:
+   adjustment = ((13-H)/4)*sqrt((17-abs(T-95))/17)
+   HI -= adjustment
+    
+ if H > 85 and 80 <= T <= 87:
+   adjustment = ((H-85)/10) * ((87-T)/5)
+   HI += adjustment
+ ```
 
  
