@@ -74,6 +74,8 @@ python main.py
 - [src/cell/hydrogen_cell_constants.py](./src/cell/hydrogen_cell_constants.py)
 - [src/cell/lithium_cell_constants.py](./src/cell/lithium_cell_constants.py)
 
+Вы можете настраивать батареи и дорожки, изменяя [src/app.py](./src/app.py)
+
 Также можно настроить приложение, изменяя [config.py](./config.py)
 
 ---
@@ -159,3 +161,26 @@ python main.py
   E = (R * temperature / (n * F)) * log(C_bulk / C_surface)
   ```
   Моделирует концентрационные потери: при увеличении тока реагенты (например, кислород) расходуются у поверхности реакции быстрее, чем успевают диффундировать из объёма.
+
+### Ощущаемая температура
+ [Heat index](https://en.wikipedia.org/wiki/Heat_index) был использован для вычисления ощущаемой температуры
+ ##### Используется в коде
+ ```python
+  HI = (-42.379 +
+          2.04901523 * T +
+          10.14333127 * H -
+          0.22475541 * T * H -
+          0.00683783 * T * T -
+          0.05481717 * H * H +
+          0.00122874 * T * T * H +
+          0.00085282 * T * H * H -
+          0.00000199 * T * T * H * H)
+    
+ if H < 13 and 80 <= T <= 112:
+   adjustment = ((13-H)/4)*sqrt((17-abs(T-95))/17)
+   HI -= adjustment
+    
+ if H > 85 and 80 <= T <= 87:
+   adjustment = ((H-85)/10) * ((87-T)/5)
+   HI += adjustment
+ ```
